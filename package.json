@@ -1,0 +1,33 @@
+{
+  "name": "parachainSubQ",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc -b",
+    "prepack": "rm -rf dist && npm build",
+    "test": "jest",
+    "codegen": "./node_modules/.bin/subql codegen",
+    "generate:defs": "ts-node --skip-project node_modules/.bin/polkadot-types-from-defs --package parachainSubQ/api-interfaces --input ./src/api-interfaces",
+    "generate:meta": "ts-node --skip-project node_modules/.bin/polkadot-types-from-chain --package parachainSubQ/api-interfaces --endpoint ./src/api-interfaces/kitty.json --output ./src/api-interfaces --strict"
+  },
+  "homepage": "https://github.com/subquery/subql-starter",
+  "repository": "github:subquery/subql-starter",
+  "files": [
+    "dist",
+    "schema.graphql",
+    "project.yaml"
+  ],
+  "author": "will",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@subql/types": "latest",
+    "typescript": "^4.1.3",
+    "@subql/cli": "latest",
+    "@polkadot/typegen": "^5.5.1",
+    "ts-node": "^8.6.2"
+  },
+  "dependencies": {
+    "@polkadot/api": "^4.9.2"
+  }
+}
